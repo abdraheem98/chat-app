@@ -1,0 +1,41 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:8
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - chat_data:/data/db
+    networks:
+      - chat_network
+    restart: unless-stopped
+  backend:
+    build: ./backend
+    container_name: chat-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/chatdb
+    depends_on:
+      - mongo
+    networks:
+      - chat_network
+    restart: unless-stopped
+  frontend:
+    build: ./frontend
+    container_name: chat-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - chat_network
+    restart: unless-stopped
+
+volumes:
+  chat_data
+networks:
+  chat_network:
+    driver: bridge

@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
 
 volumes:
-  chat_data
+  chat_data:
 networks:
   chat_network:
     driver: bridge

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 
-const BACKEND_URL = `http://${window.location.hostname}:5000`;
-const socket = io(BACKEND_URL);
+const socket = io('http://54.80.16.114:5000');
 
 export default function App() {
   const [username, setUsername] = useState('');
@@ -14,7 +13,7 @@ export default function App() {
 
   useEffect(() => {
     if (joined) {
-      fetch(`${BACKEND_URL}/messages/${room}`)
+      fetch(`http://54.80.16.114/messages/${room}`)
         .then(r => r.json())
         .then(setMessages);
     }

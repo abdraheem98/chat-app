@@ -6,7 +6,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - chat-app_chat_data:/data/db
+      - chat-app:/data/db
     networks:
       - chat_network
     restart: unless-stopped
@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
 
 volumes:
-  chat-app_chat_data:
+  chat-app:
 networks:
   chat_network:
     driver: bridge

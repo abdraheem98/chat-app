@@ -13,7 +13,7 @@ export default function App() {
 
   useEffect(() => {
     if (joined) {
-      fetch(`http://18.207.93.219/messages/${room}`)
+      fetch(`http://18.207.93.219:5000/messages/${room}`)
         .then(r => r.json())
         .then(setMessages);
     }

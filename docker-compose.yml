@@ -36,6 +36,8 @@ services:
 
 volumes:
   chat-app:
+    external: true
+    name: chat-app_chat_data
 networks:
   chat_network:
     driver: bridge

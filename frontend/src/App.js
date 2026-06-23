@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io('http://3.95.248.98:5000');
+const socket = io('http://3.90.2.123:5000');
 
 export default function App() {
   const [username, setUsername] = useState('');
@@ -13,7 +13,7 @@ export default function App() {
 
   useEffect(() => {
     if (joined) {
-      fetch(`http://3.95.248.98:5000/messages/${room}`)
+      fetch(`http://3.90.2.123:5000/messages/${room}`)
         .then(r => r.json())
         .then(setMessages);
     }
